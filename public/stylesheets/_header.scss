@@ -1,0 +1,40 @@
+.flex-head {
+  height: 4.3rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: teal;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-head {
+  height: 3rem;
+  width: 3rem;
+  border: 0;
+  padding-top: 0.5rem;
+  background-color: teal;
+  text-align: center;
+  cursor: pointer;
+}
+
+.iconh {
+  font-size: 2.3rem;
+  color: white;
+}
+
+.iconh:hover,
+.iconh:active,
+.iconh:visited {
+  font-size: 2.3rem;
+  color: goldenrod;
+}
+
+.date {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+}
