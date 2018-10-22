@@ -22,14 +22,12 @@ let userArray = [
   },
   {
     name: 'Katharina Meier',
-    about:
-      'Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. N',
+    about: 'Nam eget duihoncus, sem neque sed ipsum. Nnatoque penatibus et',
     image: 'https://picsum.photos/200'
   },
   {
     name: 'Maximilian Mustermann',
-    about:
-      'Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus',
+    about: 'Nam eget duihoncus, sem neque sed ipsum. Nnatoque penatibus et',
     image: 'https://picsum.photos/200'
   }
 ]
@@ -55,8 +53,7 @@ function clearValue() {
   inputAbout.value = null
   inputURL.value = null
 }
-// 2. create renderUserCard that creates <section> for each item
-// then it puts replaced <template> into each <section> item
+
 function renderUserCard() {
   placeholderEl.innerHTML = null
 
@@ -76,9 +73,6 @@ function createUserCard(userArrayObject, index) {
   const mainContainer = document.createElement('main')
   mainContainer.classList.add('user-card-main')
 
-  userCardContainer.insertAdjacentElement('afterbegin', headerContainer)
-  userCardContainer.insertAdjacentElement('beforeend', mainContainer)
-
   const namePlaceholder = document.createElement('h2')
   namePlaceholder.innerText = userArrayObject.name
 
@@ -88,35 +82,60 @@ function createUserCard(userArrayObject, index) {
   const imagePlaceholder = document.createElement('img')
   imagePlaceholder.setAttribute('src', 'https://source.unsplash.com/random')
 
-  const deleteBtnPlaceholder = document.createElement('div')
-  deleteBtnPlaceholder.classList.add('delete-btn')
-  deleteBtnPlaceholder.innerHTML = '<i class="iconb fas fa-minus-circle"></i>'
+  const deleteBtnPlaceholder = createDeleteBtnPlaceholder()
 
   deleteBtnPlaceholder.addEventListener('click', EventSource => {
     deleteUser(index)
     renderUserCard(index)
   })
 
-  const toggleBtnPlaceholder = document.createElement('div')
-  toggleBtnPlaceholder.classList.add('toggle-btn')
-  toggleBtnPlaceholder.innerHTML =
-    '<i class="iconb fas fa-chevron-circle-down"></i>'
+  const toggleBtnPlaceholder = createToggleBtnPlaceholder()
 
   toggleBtnPlaceholder.addEventListener('click', event => {
-    imagePlaceholder.classList.toggle('visible')
-    //mainContainer.classList.toggle('hidden')
-    toggleBtnPlaceholder.classList.toggle('upside-down')
-    userCardContainer.classList.toggle('visible')
+    toggleBtn(
+      imagePlaceholder,
+      mainContainer,
+      toggleBtnPlaceholder,
+      userCardContainer
+    )
   })
 
+  userCardContainer.insertAdjacentElement('afterbegin', headerContainer)
+  userCardContainer.insertAdjacentElement('beforeend', mainContainer)
   headerContainer.insertAdjacentElement('afterbegin', namePlaceholder)
   headerContainer.insertAdjacentElement('beforeend', deleteBtnPlaceholder)
   headerContainer.insertAdjacentElement('beforeend', toggleBtnPlaceholder)
-
   mainContainer.insertAdjacentElement('afterbegin', imagePlaceholder)
   mainContainer.insertAdjacentElement('beforeend', aboutPlaceholder)
 
   return userCardContainer
+}
+
+function createDeleteBtnPlaceholder() {
+  const deleteBtnPlaceholder = document.createElement('div')
+  deleteBtnPlaceholder.classList.add('delete-btn')
+  deleteBtnPlaceholder.innerHTML = '<i class="iconb fas fa-minus-circle"></i>'
+  return deleteBtnPlaceholder
+}
+
+function createToggleBtnPlaceholder() {
+  const toggleBtnPlaceholder = document.createElement('div')
+  toggleBtnPlaceholder.classList.add('toggle-btn')
+  toggleBtnPlaceholder.innerHTML =
+    '<i class="iconb fas fa-chevron-circle-down"></i>'
+  return toggleBtnPlaceholder
+}
+
+function toggleBtn(
+  imagePlaceholder,
+  mainContainer,
+  toggleBtnPlaceholder,
+  userCardContainer
+) {
+  imagePlaceholder.classList.toggle('opacity')
+  mainContainer.classList.toggle('opacity')
+  toggleBtnPlaceholder.classList.toggle('upside-down')
+  userCardContainer.classList.toggle('visible')
 }
 
 function deleteUser(index) {
