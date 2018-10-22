@@ -20,13 +20,13 @@
   cursor: pointer; }
 
 .iconh {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: white; }
 
 .iconh:hover,
 .iconh:active,
 .iconh:visited {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #145252; }
 
 .date {
@@ -100,9 +100,7 @@ button {
   height: 3rem;
   background-color: #188a8a;
   color: whitesmoke;
-  text-transform: uppercase;
-  font-size: 1.3rem;
-  letter-spacing: 0.1rem; }
+  font-size: 1.1rem; }
 
 button.add-button:hover {
   background-color: #145252;
@@ -128,13 +126,13 @@ button.add-button:hover {
   cursor: pointer; }
 
 .iconf {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: white; }
 
 .iconf:hover,
 .iconf:active,
 .iconf:visited {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #145252; }
 
 *,
@@ -182,7 +180,7 @@ button:focus {
 
 h2 {
   margin: 10px auto 30px 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #145252; }
 
 img {
@@ -199,19 +197,5 @@ img {
 p {
   color: gray;
   margin-top: 0; }
-
-*,
-html,
-body {
-  box-sizing: border-box;
-  font-family: 'Arvo', serif;
-  font-size: 1rem;
-  letter-spacing: 0.05rem; }
-
-body {
-  background: whitesmoke; }
-
-button:focus {
-  outline: none; }
 
 /*# sourceMappingURL=style.css.map */

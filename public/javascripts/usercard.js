@@ -103,7 +103,7 @@ function createUserCard(userArrayObject, index) {
     '<i class="iconb fas fa-chevron-circle-down"></i>'
 
   toggleBtnPlaceholder.addEventListener('click', event => {
-    imagePlaceholder.classList.toggle('opacity')
+    // imagePlaceholder.classList.toggle('visible')
     mainContainer.classList.toggle('visible')
     toggleBtnPlaceholder.classList.toggle('upside-down')
     userCardContainer.classList.toggle('visible')
@@ -118,20 +118,6 @@ function createUserCard(userArrayObject, index) {
 
   return userCardContainer
 }
-
-// function createToggleButton(toggleBtnPlaceholder) {
-//   const toggleBtnPlaceholder = document.createElement('div')
-//   toggleBtnPlaceholder.classList.add('toggle-btn')
-//   toggleBtnPlaceholder.innerHTML =
-//     '<i class="iconb fas fa-chevron-circle-down"></i>'
-
-//   toggleBtnPlaceholder.addEventListener('click', event => {
-//     imagePlaceholder.classList.toggle('opacity')
-//     mainContainer.classList.toggle('visible')
-//     toggleBtnPlaceholder.classList.toggle('upside-down')
-//   })
-//   return toggleBtnPlaceholder
-// }
 
 function deleteUser(index) {
   const newUserArrayStart = userArray.slice(0, index)
