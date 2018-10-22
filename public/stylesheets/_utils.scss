@@ -1,20 +1,15 @@
+*,
+html,
 body {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 60px auto 60px;
+  box-sizing: border-box;
+  font-family: 'Arvo', serif;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+}
+body {
+  background: whitesmoke;
 }
 
-img {
-  width: 200px;
-  height: 200px;
+button:focus {
+  outline: none;
 }
-
-// grid-template-areas:
-// "h h h h h h h h h h h h"
-// "m m m m m m m m m m m m"
-// "m m m m m m m m m m m m"
-// "m m m m m m m m m m m m"
-// "m m m m m m m m m m m m"
-// "m m m m m m m m m m m m"
-// "f f f f f f f f f f f f";

@@ -1,68 +1,148 @@
+// 1. grab HTML elements
+const placeholderEl = get('.section-container')
+const inputName = get('.input-name')
+const inputAbout = get('.input-about')
+const inputURL = get('.input-url')
+const addButton = get('.add-button')
+const userForm = get('.user-form')
+const addCardBtn = get('i.iconh')
+
 let userArray = [
   {
-    name: 'Max',
-    about: 'I love swimming',
-    image: 'https://source.unsplash.com/random'
+    name: 'Moritz Kunterbunt',
+    about:
+      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolo',
+    image: 'https://picsum.photos/200'
   },
   {
-    name: 'Max',
-    about: 'I love swimming',
-    image: 'https://source.unsplash.com/random'
+    name: 'Sunny Sonnenschirm',
+    about:
+      'Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim',
+    image: 'https://picsum.photos/200'
   },
   {
-    name: 'Max',
-    about: 'I love swimming',
-    image: 'https://source.unsplash.com/random'
+    name: 'Katharina Meier',
+    about:
+      'Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. N',
+    image: 'https://picsum.photos/200'
   },
   {
-    name: 'Max',
-    about: 'I love swimming',
-    image: 'https://source.unsplash.com/random'
-  },
-  {
-    name: 'Max',
-    about: 'I love swimming',
-    image: 'https://source.unsplash.com/random'
+    name: 'Maximilian Mustermann',
+    about:
+      'Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus',
+    image: 'https://picsum.photos/200'
   }
 ]
 
-// 1. grab HTML elements
-const placeholderEl = document.querySelector('.section-container')
-const inputName = document.querySelector('.input-name')
-const inputAbout = document.querySelector('.input-about')
-const inputURL = document.querySelector('.input-url')
-const addButton = document.querySelector('.add-button')
-const userForm = document.querySelector('.user-form')
-
 renderUserCard()
 
+userForm.addEventListener('submit', event => {
+  event.preventDefault()
+  userArray = [
+    ...userArray,
+    {
+      name: inputName.value,
+      about: inputAbout.value,
+      image: inputURL.value
+    }
+  ]
+
+  renderUserCard()
+})
+
+function clearValue() {
+  inputName.value = null
+  inputAbout.value = null
+  inputURL.value = null
+}
 // 2. create renderUserCard that creates <section> for each item
 // then it puts replaced <template> into each <section> item
 function renderUserCard() {
   placeholderEl.innerHTML = null
 
-  userArray.forEach(userArrayObject => {
-    const userCard = createUserCard(userArrayObject)
+  userArray.forEach((userArrayObject, index) => {
+    const userCard = createUserCard(userArrayObject, index)
     placeholderEl.insertAdjacentElement('afterbegin', userCard)
   })
 }
 
-function createUserCard(userArrayObject) {
+function createUserCard(userArrayObject, index) {
   const userCardContainer = document.createElement('section')
   userCardContainer.classList.add('usercard-container')
 
-  const template = document.querySelector('.template-container')
+  const headerContainer = document.createElement('header')
+  headerContainer.classList.add('user-card-header')
 
-  const cardHTML = template.innerHTML
-    .replace('#h2#', userArrayObject.name)
-    .replace('#text#', userArrayObject.about)
-    .replace('#imgurl#', userArrayObject.image)
+  const mainContainer = document.createElement('main')
+  mainContainer.classList.add('user-card-main')
 
-  userCardContainer.insertAdjacentHTML('afterbegin', cardHTML)
+  userCardContainer.insertAdjacentElement('afterbegin', headerContainer)
+  userCardContainer.insertAdjacentElement('beforeend', mainContainer)
+
+  const namePlaceholder = document.createElement('h2')
+  namePlaceholder.innerText = userArrayObject.name
+
+  const aboutPlaceholder = document.createElement('p')
+  aboutPlaceholder.innerText = userArrayObject.about
+
+  const imagePlaceholder = document.createElement('img')
+  imagePlaceholder.setAttribute('src', 'https://source.unsplash.com/random')
+
+  const deleteBtnPlaceholder = document.createElement('div')
+  deleteBtnPlaceholder.classList.add('delete-btn')
+  deleteBtnPlaceholder.innerHTML = '<i class="iconb fas fa-minus-circle"></i>'
+
+  deleteBtnPlaceholder.addEventListener('click', EventSource => {
+    deleteUser(index)
+    renderUserCard(index)
+  })
+
+  const toggleBtnPlaceholder = document.createElement('div')
+  toggleBtnPlaceholder.classList.add('toggle-btn')
+  toggleBtnPlaceholder.innerHTML =
+    '<i class="iconb fas fa-chevron-circle-down"></i>'
+
+  toggleBtnPlaceholder.addEventListener('click', event => {
+    imagePlaceholder.classList.toggle('opacity')
+    mainContainer.classList.toggle('visible')
+    toggleBtnPlaceholder.classList.toggle('upside-down')
+    userCardContainer.classList.toggle('visible')
+  })
+
+  headerContainer.insertAdjacentElement('afterbegin', namePlaceholder)
+  headerContainer.insertAdjacentElement('beforeend', deleteBtnPlaceholder)
+  headerContainer.insertAdjacentElement('beforeend', toggleBtnPlaceholder)
+
+  mainContainer.insertAdjacentElement('afterbegin', imagePlaceholder)
+  mainContainer.insertAdjacentElement('beforeend', aboutPlaceholder)
 
   return userCardContainer
 }
 
-userForm.addEventListener('submit', event => {
-  const createCard = createCardElement()
+// function createToggleButton(toggleBtnPlaceholder) {
+//   const toggleBtnPlaceholder = document.createElement('div')
+//   toggleBtnPlaceholder.classList.add('toggle-btn')
+//   toggleBtnPlaceholder.innerHTML =
+//     '<i class="iconb fas fa-chevron-circle-down"></i>'
+
+//   toggleBtnPlaceholder.addEventListener('click', event => {
+//     imagePlaceholder.classList.toggle('opacity')
+//     mainContainer.classList.toggle('visible')
+//     toggleBtnPlaceholder.classList.toggle('upside-down')
+//   })
+//   return toggleBtnPlaceholder
+// }
+
+function deleteUser(index) {
+  const newUserArrayStart = userArray.slice(0, index)
+  const newUserArrayEnd = userArray.slice(index + 1)
+  userArray = [...newUserArrayStart, ...newUserArrayEnd]
+}
+
+addCardBtn.addEventListener('click', event => {
+  userForm.classList.toggle('show-form')
 })
+
+function get(selector) {
+  return document.querySelector(selector)
+}

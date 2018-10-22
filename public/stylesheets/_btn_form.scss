@@ -1,0 +1,36 @@
+.delete-btn,
+.toggle-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 1.7rem;
+  height: 1.7rem;
+  background: white;
+  margin-top: 15px;
+  flex-shrink: 0;
+  transform: rotate(0deg);
+  transition: all 0.5s ease;
+  padding-bottom: 3px;
+  transform-origin: 48% 43%;
+}
+
+.toggle-btn {
+  margin-left: 10px;
+}
+i.iconb:hover,
+i.iconb:active,
+i.iconb:hover,
+i.iconb:active {
+  color: #145252;
+  cursor: pointer;
+}
+
+i.iconb {
+  font-size: 1.8rem;
+  color: cadetblue;
+}
+
+.upside-down {
+  transform: rotate(180deg);
+}
