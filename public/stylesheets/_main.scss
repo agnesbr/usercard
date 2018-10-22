@@ -26,14 +26,23 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: auto;
+  height: 100%;
+  transition: height 1s;
+  //height: auto;
   //display: none;
+  overflow: hidden;
+}
+
+.hidden {
+  height: 0;
   overflow: hidden;
 }
 
 .visible {
   transition: all 1s ease;
   height: 79%;
+  // height: 100%;
+  //display: block;
 }
 
 h2 {

@@ -171,7 +171,12 @@ button:focus {
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: auto;
+  height: 100%;
+  transition: height 1s;
+  overflow: hidden; }
+
+.hidden {
+  height: 0;
   overflow: hidden; }
 
 .visible {

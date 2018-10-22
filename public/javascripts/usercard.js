@@ -103,8 +103,8 @@ function createUserCard(userArrayObject, index) {
     '<i class="iconb fas fa-chevron-circle-down"></i>'
 
   toggleBtnPlaceholder.addEventListener('click', event => {
-    // imagePlaceholder.classList.toggle('visible')
-    mainContainer.classList.toggle('visible')
+    imagePlaceholder.classList.toggle('visible')
+    //mainContainer.classList.toggle('hidden')
     toggleBtnPlaceholder.classList.toggle('upside-down')
     userCardContainer.classList.toggle('visible')
   })
