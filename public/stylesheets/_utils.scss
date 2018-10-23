@@ -1,3 +1,13 @@
+:root {
+  --basic-color: white;
+  --main-color: teal;
+  --background: whitesmoke;
+  --contrast-color: #145252;
+  // --shaddow-color: rgba(0, 0, 0, 0.2);
+  --light-color: cadetblue;
+  // -- button24, 138, 138)
+}
+
 *,
 html,
 body {
@@ -7,7 +17,7 @@ body {
   letter-spacing: 0.05rem;
 }
 body {
-  background: whitesmoke;
+  background: var(--background);
 }
 
 button:focus {

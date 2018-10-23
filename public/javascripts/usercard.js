@@ -89,16 +89,11 @@ function createUserCard(userArrayObject, index) {
     renderUserCard(index)
   })
 
-  const toggleBtnPlaceholder = createToggleBtnPlaceholder()
-
-  toggleBtnPlaceholder.addEventListener('click', event => {
-    toggleBtn(
-      imagePlaceholder,
-      mainContainer,
-      toggleBtnPlaceholder,
-      userCardContainer
-    )
-  })
+  const toggleBtnPlaceholder = createToggleBtnPlaceholder(
+    imagePlaceholder,
+    mainContainer,
+    userCardContainer
+  )
 
   userCardContainer.insertAdjacentElement('afterbegin', headerContainer)
   userCardContainer.insertAdjacentElement('beforeend', mainContainer)
@@ -110,7 +105,6 @@ function createUserCard(userArrayObject, index) {
 
   return userCardContainer
 }
-
 function createDeleteBtnPlaceholder() {
   const deleteBtnPlaceholder = document.createElement('div')
   deleteBtnPlaceholder.classList.add('delete-btn')
@@ -118,24 +112,23 @@ function createDeleteBtnPlaceholder() {
   return deleteBtnPlaceholder
 }
 
-function createToggleBtnPlaceholder() {
+function createToggleBtnPlaceholder(
+  imagePlaceholder,
+  mainContainer,
+  userCardContainer
+) {
   const toggleBtnPlaceholder = document.createElement('div')
   toggleBtnPlaceholder.classList.add('toggle-btn')
   toggleBtnPlaceholder.innerHTML =
     '<i class="iconb fas fa-chevron-circle-down"></i>'
-  return toggleBtnPlaceholder
-}
 
-function toggleBtn(
-  imagePlaceholder,
-  mainContainer,
-  toggleBtnPlaceholder,
-  userCardContainer
-) {
-  imagePlaceholder.classList.toggle('opacity')
-  mainContainer.classList.toggle('opacity')
-  toggleBtnPlaceholder.classList.toggle('upside-down')
-  userCardContainer.classList.toggle('visible')
+  toggleBtnPlaceholder.addEventListener('click', event => {
+    imagePlaceholder.classList.toggle('opacity')
+    mainContainer.classList.toggle('opacity')
+    toggleBtnPlaceholder.classList.toggle('upside-down')
+    userCardContainer.classList.toggle('visible')
+  })
+  return toggleBtnPlaceholder
 }
 
 function deleteUser(index) {
@@ -147,6 +140,15 @@ function deleteUser(index) {
 addCardBtn.addEventListener('click', event => {
   userForm.classList.toggle('show-form')
 })
+
+function loadFromLocalStorage() {
+  return JSON.parse(localStorage.getItem('todo-list'))
+}
+
+function saveToLocalStorage() {
+  console.log('saved to localStorage')
+  localStorage.setItem('todo-list', JSON.stringify(todosArray))
+}
 
 function get(selector) {
   return document.querySelector(selector)

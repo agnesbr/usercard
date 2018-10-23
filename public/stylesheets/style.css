@@ -1,38 +1,38 @@
 .flex-head {
   height: 4.3rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-color: teal;
-  padding: 0.5rem 1rem 0.5rem 1rem;
+  background-color: var(--main-color);
+  padding: 0.5rem 1rem 0.5rem;
   position: sticky;
   top: 0;
   box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.2);
   z-index: 3; }
 
 .button-head {
-  height: 3rem;
-  width: 3rem;
+  height: 2rem;
+  width: 2rem;
   border: 0;
   padding-top: 0.5rem;
-  background-color: teal;
+  background-color: var(--main-color);
   text-align: center;
   cursor: pointer; }
 
 .iconh {
   font-size: 1.8rem;
-  color: white; }
+  color: var(--basic-color); }
 
 .iconh:hover,
 .iconh:active,
 .iconh:visited {
   font-size: 1.8rem;
-  color: #145252; }
+  color: var(--contrast-color); }
 
 .date {
   font-family: 'Roboto Slab', serif;
   font-size: 2rem;
-  color: white;
+  color: var(--basic-color);
   text-align: center; }
 
 .delete-btn,
@@ -43,7 +43,7 @@
   border-radius: 50%;
   width: 1.7rem;
   height: 1.7rem;
-  background: white;
+  background: var(--basic-color);
   margin-top: 15px;
   flex-shrink: 0;
   transform: rotate(0deg);
@@ -58,12 +58,12 @@ i.iconb:hover,
 i.iconb:active,
 i.iconb:hover,
 i.iconb:active {
-  color: #145252;
+  color: var(--contrast-color);
   cursor: pointer; }
 
 i.iconb {
   font-size: 1.8rem;
-  color: cadetblue; }
+  color: var(--light-color); }
 
 .upside-down {
   transform: rotate(180deg); }
@@ -103,23 +103,23 @@ button {
   font-size: 1.1rem; }
 
 button.add-button:hover {
-  background-color: #145252;
+  background-color: var(--contrast-color);
   color: #188a8a; }
 
 .flex-footer {
   height: 4.3rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   position: sticky;
   bottom: 0;
-  background-color: teal;
-  padding: 0.5rem 1rem 0.5rem 1rem;
+  background-color: var(--main-color);
+  padding: 0.3rem 1rem 0.3rem;
   box-shadow: 0px -2px 2px 1px rgba(0, 0, 0, 0.2); }
 
 .button-footer {
-  height: 3em;
-  width: 3em;
+  height: 2rem;
+  width: 2rem;
   border: 0;
   z-index: -1;
   background-color: rgba(24, 138, 138, 0);
@@ -127,13 +127,20 @@ button.add-button:hover {
 
 .iconf {
   font-size: 1.8rem;
-  color: white; }
+  color: var(--basic-color); }
 
 .iconf:hover,
 .iconf:active,
 .iconf:visited {
   font-size: 1.8rem;
-  color: #145252; }
+  color: var(--contrast-color); }
+
+:root {
+  --basic-color: white;
+  --main-color: teal;
+  --background: whitesmoke;
+  --contrast-color: #145252;
+  --light-color: cadetblue; }
 
 *,
 html,
@@ -144,7 +151,7 @@ body {
   letter-spacing: 0.05rem; }
 
 body {
-  background: whitesmoke; }
+  background: var(--background); }
 
 button:focus {
   outline: none; }
@@ -173,7 +180,8 @@ button:focus {
   align-items: center;
   height: 100%;
   opacity: 0;
-  overflow: hidden; }
+  overflow: hidden;
+  transition: all 0.2s ease; }
 
 .visible {
   transition: all 0.4s;

@@ -38,6 +38,6 @@ button {
 }
 
 button.add-button:hover {
-  background-color: #145252;
+  background-color: var(--contrast-color);
   color: rgba(24, 138, 138, 1);
 }

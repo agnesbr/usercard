@@ -6,7 +6,7 @@
   border-radius: 50%;
   width: 1.7rem;
   height: 1.7rem;
-  background: white;
+  background: var(--basic-color);
   margin-top: 15px;
   flex-shrink: 0;
   transform: rotate(0deg);
@@ -22,13 +22,13 @@ i.iconb:hover,
 i.iconb:active,
 i.iconb:hover,
 i.iconb:active {
-  color: #145252;
+  color: var(--contrast-color);
   cursor: pointer;
 }
 
 i.iconb {
   font-size: 1.8rem;
-  color: cadetblue;
+  color: var(--light-color);
 }
 
 .upside-down {
